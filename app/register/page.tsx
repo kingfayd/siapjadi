@@ -1,11 +1,11 @@
 'use client'
 
-import { useState } from 'react'
+import { Suspense, useState } from 'react'
 import { supabase } from '@/app/lib/supabase'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 
-export default function RegisterPage() {
+function RegisterContent() {
     const searchParams = useSearchParams()
     const roleParam = searchParams.get('role')?.toLowerCase()
 
@@ -169,5 +169,17 @@ export default function RegisterPage() {
                 </p>
             </div>
         </div>
+    )
+}
+
+export default function RegisterPage() {
+    return (
+        <Suspense fallback={
+            <div className="flex h-screen items-center justify-center">
+                <div className="animate-spin h-8 w-8 border-4 border-primary border-t-transparent rounded-full" />
+            </div>
+        }>
+            <RegisterContent />
+        </Suspense>
     )
 }
