@@ -5,10 +5,11 @@ import { supabase } from '@/app/lib/supabase'
 import { useRouter } from 'next/navigation'
 import { FileUpload } from '@/app/lib/FileUpload'
 import { createOrder, submitAssignment } from '@/app/lib/actions'
+import { User } from '@supabase/supabase-js'
 
 export default function DashboardPage() {
     const [loading, setLoading] = useState(true)
-    const [user, setUser] = useState<any>(null)
+    const [user, setUser] = useState<User | null>(null)
     const router = useRouter()
 
     useEffect(() => {
@@ -59,15 +60,15 @@ export default function DashboardPage() {
             </nav>
 
             <main className="container mx-auto py-8 px-4 sm:px-8">
-                {role === 'ADMIN' && <AdminDashboard user={user} />}
-                {role === 'PENJOKI' && <PenjokiDashboard user={user} />}
-                {role === 'KLIEN' && <KlienDashboard user={user} />}
+                {role === 'ADMIN' && <AdminDashboard />}
+                {role === 'PENJOKI' && <PenjokiDashboard />}
+                {role === 'KLIEN' && <KlienDashboard user={user as User} />}
             </main>
         </div>
     )
 }
 
-function AdminDashboard({ user }: { user: any }) {
+function AdminDashboard() {
     return (
         <div className="space-y-6">
             <h1 className="text-2xl font-bold">Overview Bisnis</h1>
@@ -91,7 +92,7 @@ function AdminDashboard({ user }: { user: any }) {
     )
 }
 
-function PenjokiDashboard({ user }: { user: any }) {
+function PenjokiDashboard() {
     const [isSubmitModalOpen, setIsSubmitModalOpen] = useState(false)
     const [selectedOrderId, setSelectedOrderId] = useState<string | null>(null)
     const [submissionData, setSubmissionData] = useState({
@@ -190,9 +191,9 @@ function PenjokiDashboard({ user }: { user: any }) {
     )
 }
 
-function KlienDashboard({ user }: { user: any }) {
+function KlienDashboard({ user }: { user: User }) {
     const [isModalOpen, setIsModalOpen] = useState(false)
-    const [orders, setOrders] = useState<any[]>([])
+    const orders: unknown[] = []
     const [formData, setFormData] = useState({
         subject: '',
         description: '',

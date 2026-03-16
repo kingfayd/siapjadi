@@ -24,8 +24,9 @@ export function FileUpload({ orderId, path, onUploadComplete, label }: FileUploa
         try {
             const publicUrl = await uploadOrderFile(file, path, orderId)
             onUploadComplete(publicUrl)
-        } catch (err: any) {
-            setError(err.message || 'Gagal mengupload file')
+        } catch (err: unknown) {
+            const errorMessage = err instanceof Error ? err.message : 'Gagal mengupload file'
+            setError(errorMessage)
             console.error(err)
         } finally {
             setUploading(false)

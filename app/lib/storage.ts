@@ -23,7 +23,7 @@ export async function uploadOrderFile(
         const fileName = `${orderId}/${path}-${Date.now()}.${fileExt}`;
         const filePath = fileName; // Folder sudah termasuk dalam fileName jika diinginkan, atau dipisah
 
-        const { data, error } = await supabase.storage
+        const { error } = await supabase.storage
             .from('orders')
             .upload(filePath, file, {
                 cacheControl: '3600',
