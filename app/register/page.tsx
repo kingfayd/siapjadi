@@ -3,7 +3,7 @@
 import { Suspense, useState } from 'react'
 import { supabase } from '@/app/lib/supabase'
 import Link from 'next/link'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 
 function RegisterContent() {
     const searchParams = useSearchParams()
