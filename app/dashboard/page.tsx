@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { supabase } from '@/app/lib/supabase'
 import { useRouter } from 'next/navigation'
 import { FileUpload } from '@/app/lib/FileUpload'
-import { createOrder, submitAssignment } from '@/app/lib/actions'
+import { createOrder } from '@/app/lib/actions'
 import { User } from '@supabase/supabase-js'
 
 export default function DashboardPage() {

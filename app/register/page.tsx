@@ -3,11 +3,8 @@
 import { Suspense, useState } from 'react'
 import { supabase } from '@/app/lib/supabase'
 import Link from 'next/link'
-import { useSearchParams } from 'next/navigation'
 
 function RegisterContent() {
-    const searchParams = useSearchParams()
-    const roleParam = searchParams.get('role')?.toLowerCase()
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
