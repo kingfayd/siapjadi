@@ -9,14 +9,9 @@ function RegisterContent() {
     const searchParams = useSearchParams()
     const roleParam = searchParams.get('role')?.toLowerCase()
 
-    let initialRole = 'KLIEN'
-    if (roleParam === 'penjoki') initialRole = 'PENJOKI'
-    if (roleParam === 'admin') initialRole = 'ADMIN'
-
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [name, setName] = useState('')
-    const [role, setRole] = useState(initialRole)
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState<string | null>(null)
     const [success, setSuccess] = useState(false)
@@ -32,7 +27,7 @@ function RegisterContent() {
                 emailRedirectTo: `${window.location.origin}/auth/callback`,
                 data: {
                     full_name: name,
-                    role: role,
+                    role: 'KLIEN',
                 },
             },
         })
@@ -89,34 +84,6 @@ function RegisterContent() {
                     )}
 
                     <div className="space-y-4">
-                        <div>
-                            <label className="block text-sm font-medium mb-1">Role Saya</label>
-                            <div className={`grid gap-4 ${role === 'ADMIN' ? 'grid-cols-3' : 'grid-cols-2'}`}>
-                                <button
-                                    type="button"
-                                    onClick={() => setRole('KLIEN')}
-                                    className={`h-11 px-4 rounded-lg border text-sm font-medium transition-all ${role === 'KLIEN' ? 'bg-primary text-primary-foreground border-primary' : 'bg-background hover:bg-accent'}`}
-                                >
-                                    Klien (Mahasiswa)
-                                </button>
-                                <button
-                                    type="button"
-                                    onClick={() => setRole('PENJOKI')}
-                                    className={`h-11 px-4 rounded-lg border text-sm font-medium transition-all ${role === 'PENJOKI' ? 'bg-primary border-primary text-primary-foreground' : 'bg-background hover:bg-accent'}`}
-                                >
-                                    Penjoki (Expert)
-                                </button>
-                                {role === 'ADMIN' && (
-                                    <button
-                                        type="button"
-                                        onClick={() => setRole('ADMIN')}
-                                        className="h-11 px-4 rounded-lg border text-sm font-medium transition-all bg-primary border-primary text-primary-foreground"
-                                    >
-                                        Owner (Admin)
-                                    </button>
-                                )}
-                            </div>
-                        </div>
                         <div>
                             <label className="block text-sm font-medium mb-1">Nama Lengkap</label>
                             <input

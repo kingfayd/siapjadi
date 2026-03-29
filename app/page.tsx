@@ -28,14 +28,11 @@ export default function Home() {
               Solusi <span className="text-primary">Joki Tugas</span> Profesional & Terpercaya
             </h1>
             <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
-              Platform all-in-one yang menghubungkan mahasiswa dengan penjoki ahli. Transparan, aman, dan tepat waktu.
+              Platform jasa pengerjaan tugas akademik yang transparan, aman, dan tepat waktu langsung ditangani oleh profesional.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/register" className="h-12 px-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-semibold text-lg hover:scale-105 transition-transform">
-                Join Sebagai Klien
-              </Link>
-              <Link href="/register?role=penjoki" className="h-12 px-8 rounded-full border border-primary text-primary flex items-center justify-center font-semibold text-lg hover:bg-primary/5 transition-colors">
-                Daftar Jadi Penjoki
+                Mulai Order Sekarang
               </Link>
             </div>
           </div>
@@ -43,13 +40,13 @@ export default function Home() {
 
         {/* Roles Section */}
         <section id="roles" className="py-24 px-4 sm:px-8">
-          <div className="container max-w-6xl mx-auto">
+          <div className="container max-w-5xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold mb-4">Satu Platform, Tiga Peran Utama</h2>
-              <p className="text-muted-foreground">Sistem yang dirancang khusus untuk kenyamanan setiap pengguna.</p>
+              <h2 className="text-3xl font-bold mb-4">Sistem Sederhana & Transparan</h2>
+              <p className="text-muted-foreground">Interaksi langsung antara Anda dan tim profesional kami.</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* Klien */}
               <div className="p-8 rounded-2xl border bg-card hover:shadow-xl transition-shadow">
                 <div className="h-12 w-12 rounded-xl bg-blue-100 dark:bg-blue-900 flex items-center justify-center mb-6">
@@ -62,39 +59,23 @@ export default function Home() {
                   <li className="flex items-center gap-2">✓ Order tugas dengan mudah</li>
                   <li className="flex items-center gap-2">✓ Tracking progress real-time</li>
                   <li className="flex items-center gap-2">✓ Pembayaran aman & terverifikasi</li>
-                  <li className="flex items-center gap-2">✓ Chat langsung dengan admin</li>
-                </ul>
-              </div>
-
-              {/* Penjoki */}
-              <div className="p-8 rounded-2xl border bg-card hover:shadow-xl transition-shadow border-primary/20 bg-primary/[0.02]">
-                <div className="h-12 w-12 rounded-xl bg-primary/20 flex items-center justify-center mb-6">
-                  <svg className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold mb-4">Penjoki (Expert)</h3>
-                <ul className="space-y-3 text-muted-foreground mb-8">
-                  <li className="flex items-center gap-2">✓ Marketplace tugas harian</li>
-                  <li className="flex items-center gap-2">✓ Manajemen tugas terorganisir</li>
-                  <li className="flex items-center gap-2">✓ Withdraw penghasilan cepat</li>
-                  <li className="flex items-center gap-2">✓ Sistem submit yang simpel</li>
+                  <li className="flex items-center gap-2">✓ Konsultasi langsung dengan tim</li>
                 </ul>
               </div>
 
               {/* Owner */}
-              <div className="p-8 rounded-2xl border bg-card hover:shadow-xl transition-shadow">
-                <div className="h-12 w-12 rounded-xl bg-amber-100 dark:bg-amber-900 flex items-center justify-center mb-6">
-                  <svg className="h-6 w-6 text-amber-600 dark:text-amber-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div className="p-8 rounded-2xl border bg-card hover:shadow-xl transition-shadow border-primary/20 bg-primary/[0.02]">
+                <div className="h-12 w-12 rounded-xl bg-primary/20 flex items-center justify-center mb-6">
+                  <svg className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold mb-4">Owner (Admin)</h3>
+                <h3 className="text-xl font-bold mb-4">Admin (Profesional)</h3>
                 <ul className="space-y-3 text-muted-foreground mb-8">
-                  <li className="flex items-center gap-2">✓ Dashboard statistik lengkap</li>
-                  <li className="flex items-center gap-2">✓ Plotting tugas ke penjoki</li>
-                  <li className="flex items-center gap-2">✓ Verifikasi pembayaran</li>
-                  <li className="flex items-center gap-2">✓ Manajemen user & sengketa</li>
+                  <li className="flex items-center gap-2">✓ Pengerjaan tugas oleh tenaga ahli</li>
+                  <li className="flex items-center gap-2">✓ Manajemen tugas terpusat</li>
+                  <li className="flex items-center gap-2">✓ Verifikasi pembayaran otomatis</li>
+                  <li className="flex items-center gap-2">✓ Jaminan kualitas & tepat waktu</li>
                 </ul>
               </div>
             </div>
