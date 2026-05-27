@@ -35,8 +35,8 @@ export function FileUpload({ orderId, path, onUploadComplete, label }: FileUploa
 
     return (
         <div className="space-y-2">
-            {label && <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200">{label}</label>}
-            <div className="flex items-center gap-4 p-3 rounded-xl border-2 border-dashed border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50 hover:border-primary/50 transition-colors group">
+            {label && <label className="block text-sm font-medium mb-1">{label}</label>}
+            <div className="flex items-center gap-4 p-3 rounded-xl border-2 border-dashed bg-accent/20 hover:border-primary/50 transition-colors group">
                 <label className="flex-1 cursor-pointer">
                     <input
                         type="file"
@@ -45,14 +45,14 @@ export function FileUpload({ orderId, path, onUploadComplete, label }: FileUploa
                         className="sr-only"
                     />
                     <div className="flex items-center gap-3">
-                        <div className="h-10 w-10 rounded-lg bg-white dark:bg-slate-700 shadow-sm border flex items-center justify-center group-hover:scale-105 transition-transform">
+                        <div className="h-10 w-10 rounded-lg bg-background shadow-sm border flex items-center justify-center group-hover:scale-105 transition-transform">
                             <svg className="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                             </svg>
                         </div>
                         <div>
-                            <p className="text-sm font-medium text-slate-600 dark:text-slate-300">Pilih file...</p>
-                            <p className="text-xs text-slate-400">Zipped, PDF, atau Doc</p>
+                            <p className="text-sm font-medium">Pilih file...</p>
+                            <p className="text-xs text-muted-foreground">Zipped, PDF, atau Doc</p>
                         </div>
                     </div>
                 </label>

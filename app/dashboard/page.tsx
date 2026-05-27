@@ -115,12 +115,12 @@ function KlienDashboard({ user }: { user: User }) {
 
             {isModalOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-md p-4">
-                    <div className="bg-white dark:bg-slate-900 w-full max-w-lg rounded-3xl p-8 shadow-2xl border-0 space-y-6 animate-in fade-in zoom-in duration-300">
+                    <div className="bg-card text-card-foreground border border-border w-full max-w-lg rounded-3xl p-8 shadow-2xl space-y-6 animate-in fade-in zoom-in duration-300">
                         <div className="flex justify-between items-center border-b pb-4 -mx-2">
                             <h2 className="text-xl font-bold tracking-tight">Order Tugas Baru</h2>
                             <button
                                 onClick={() => setIsModalOpen(false)}
-                                className="h-8 w-8 flex items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-400 hover:text-slate-600"
+                                className="h-8 w-8 flex items-center justify-center rounded-full hover:bg-accent hover:text-accent-foreground transition-colors text-muted-foreground"
                             >
                                 <span className="text-2xl leading-none">×</span>
                             </button>
@@ -130,26 +130,26 @@ function KlienDashboard({ user }: { user: User }) {
                             <div>
                                 <label className="block text-sm font-medium mb-1">Mata Pelajaran / Subjek</label>
                                 <input
-                                    className="w-full px-4 py-2.5 rounded-xl border bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
+                                    className="w-full px-4 py-2.5 rounded-xl border bg-background focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
                                     placeholder="Contoh: Matematika"
                                     value={formData.subject}
                                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-semibold mb-1.5 text-slate-700 dark:text-slate-200">Deskripsi Tugas</label>
+                                <label className="block text-sm font-medium mb-1">Deskripsi Tugas</label>
                                 <textarea
-                                    className="w-full px-4 py-2.5 rounded-xl border bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all h-24"
+                                    className="w-full px-4 py-2.5 rounded-xl border bg-background focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all h-24"
                                     placeholder="Jelaskan detail tugas..."
                                     value={formData.description}
                                     onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-semibold mb-1.5 text-slate-700 dark:text-slate-200">Deadline</label>
+                                <label className="block text-sm font-medium mb-1">Deadline</label>
                                 <input
                                     type="date"
-                                    className="w-full px-4 py-2.5 rounded-xl border bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
+                                    className="w-full px-4 py-2.5 rounded-xl border bg-background focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
                                     value={formData.deadline}
                                     onChange={(e) => setFormData({ ...formData, deadline: e.target.value })}
                                 />
@@ -168,7 +168,9 @@ function KlienDashboard({ user }: { user: User }) {
                             onClick={async () => {
                                 const res = await createOrder({
                                     ...formData,
-                                    clientId: user.id
+                                    clientId: user.id,
+                                    clientEmail: user.email,
+                                    clientName: user.user_metadata?.full_name
                                 })
                                 if (res.success) {
                                     setIsModalOpen(false)

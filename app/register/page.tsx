@@ -3,6 +3,7 @@
 import { Suspense, useState } from 'react'
 import { supabase } from '@/app/lib/supabase'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 function RegisterContent() {
 
@@ -11,8 +12,8 @@ function RegisterContent() {
     const [name, setName] = useState('')
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState<string | null>(null)
-    const [success, setSuccess] = useState(false)
     const [showPassword, setShowPassword] = useState(false)
+    const router = useRouter()
     const handleRegister = async (e: React.FormEvent) => {
         e.preventDefault()
         setLoading(true)
@@ -34,30 +35,9 @@ function RegisterContent() {
             setError(error.message)
             setLoading(false)
         } else {
-            setSuccess(true)
-            setLoading(false)
+            router.push('/dashboard')
+            router.refresh()
         }
-    }
-
-    if (success) {
-        return (
-            <div className="flex min-h-screen items-center justify-center bg-accent/20 px-4 text-center">
-                <div className="w-full max-w-md space-y-6 rounded-2xl border bg-card p-8 shadow-lg">
-                    <div className="h-16 w-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                    </div>
-                    <h2 className="text-2xl font-bold">Cek Email Kamu</h2>
-                    <p className="text-muted-foreground">
-                        Kami telah mengirimkan link konfirmasi ke <strong>{email}</strong>. Silakan verifikasi untuk melanjutkan.
-                    </p>
-                    <Link href="/login" className="block w-full h-12 rounded-lg bg-primary text-primary-foreground flex items-center justify-center font-semibold">
-                        Kembali ke Login
-                    </Link>
-                </div>
-            </div>
-        )
     }
 
     return (

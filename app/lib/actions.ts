@@ -8,9 +8,24 @@ export async function createOrder(data: {
     description: string
     deadline: string
     clientId: string
+    clientEmail?: string
+    clientName?: string
     fileUrl?: string
 }) {
     try {
+        if (data.clientEmail) {
+            await prisma.user.upsert({
+                where: { id: data.clientId },
+                update: {},
+                create: {
+                    id: data.clientId,
+                    email: data.clientEmail,
+                    name: data.clientName,
+                    role: 'KLIEN',
+                }
+            })
+        }
+
         const order = await prisma.order.create({
             data: {
                 subject: data.subject,
